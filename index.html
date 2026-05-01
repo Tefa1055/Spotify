@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard Spotify</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      background: #f4f6f5;
+      color: #111827;
+      padding: 30px;
+    }
+
+    .dashboard {
+      max-width: 1200px;
+      margin: auto;
+      background: white;
+      border-radius: 22px;
+      padding: 35px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    .encabezado {
+      text-align: center;
+      margin-bottom: 30px;
+      border-bottom: 3px solid #1db954;
+      padding-bottom: 25px;
+    }
+
+    .logo-spotify {
+      width: 82px;
+      height: 82px;
+      margin: 0 auto 18px auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo-spotify svg {
+      width: 82px;
+      height: 82px;
+      max-width: 82px;
+      max-height: 82px;
+      display: block;
+      filter: drop-shadow(0 8px 18px rgba(29, 185, 84, 0.35));
+    }
+
+    .encabezado h1 {
+      font-size: clamp(24px, 4vw, 36px);
+      margin-bottom: 10px;
+      color: #111827;
+      text-align: center;
+      line-height: 1.2;
+    }
+
+    .encabezado p {
+      font-size: 18px;
+      color: #6b7280;
+    }
+
+    .tarjetas {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .tarjeta {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 22px;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .tarjeta .icono {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      background: #e8f8ee;
+      color: #1db954;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      flex-shrink: 0;
+    }
+
+    .tarjeta h3 {
+      font-size: 16px;
+      color: #374151;
+      margin-bottom: 7px;
+    }
+
+    .tarjeta p {
+      font-size: 22px;
+      font-weight: bold;
+      color: #168c42;
+    }
+
+    .contenedor-paneles {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .panel {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 22px;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+
+    .panel h2 {
+      font-size: 21px;
+      color: #111827;
+      margin-bottom: 12px;
+      border-bottom: 2px solid #1db954;
+      padding-bottom: 10px;
+    }
+
+    .placeholder {
+      min-height: 160px;
+      background: #f1fbf5;
+      border: 2px dashed #b7dec5;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+      color: #4b5563;
+      font-size: 17px;
+      line-height: 1.4;
+    }
+
+    .fila-inferior {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .preguntas,
+    .arquitectura {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 25px;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+
+    .preguntas h2,
+    .arquitectura h2 {
+      font-size: 22px;
+      margin-bottom: 15px;
+      border-bottom: 2px solid #1db954;
+      padding-bottom: 10px;
+    }
+
+    .preguntas ul {
+      list-style: none;
+    }
+
+    .preguntas li {
+      margin-bottom: 12px;
+      font-size: 16px;
+      color: #374151;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .preguntas li::before {
+      content: "●";
+      color: #1db954;
+      font-size: 14px;
+      margin-top: 2px;
+    }
+
+    .caja-arquitectura {
+      background: #f1fbf5;
+      border: 1px solid #b7dec5;
+      border-radius: 18px;
+      padding: 22px;
+      color: #374151;
+      line-height: 1.6;
+    }
+
+    .arquitectura-superior {
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+      margin-bottom: 18px;
+    }
+
+    .icono-arquitectura {
+      width: 65px;
+      height: 65px;
+      border-radius: 18px;
+      background: #1db954;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      flex-shrink: 0;
+      box-shadow: 0 8px 18px rgba(29, 185, 84, 0.25);
+    }
+
+    .texto-arquitectura h3 {
+      font-size: 18px;
+      color: #111827;
+      margin-bottom: 8px;
+    }
+
+    .texto-arquitectura p {
+      font-size: 15px;
+      color: #374151;
+      line-height: 1.5;
+    }
+
+    .lista-arquitectura {
+      display: grid;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .item-arquitectura {
+      background: white;
+      border-left: 4px solid #1db954;
+      padding: 11px 14px;
+      border-radius: 10px;
+      font-size: 14px;
+      color: #374151;
+      line-height: 1.5;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.03);
+    }
+
+    .item-arquitectura strong {
+      color: #111827;
+    }
+
+    .pie {
+      text-align: center;
+      margin-top: 30px;
+      color: #6b7280;
+      font-size: 15px;
+    }
+
+    .pie span {
+      color: #1db954;
+      font-weight: bold;
+    }
+
+    @media (max-width: 900px) {
+      .tarjetas {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .contenedor-paneles {
+        grid-template-columns: 1fr;
+      }
+
+      .fila-inferior {
+        grid-template-columns: 1fr;
+      }
+
+      .arquitectura-superior {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 15px;
+      }
+
+      .dashboard {
+        padding: 20px;
+      }
+
+      .encabezado h1 {
+        font-size: 28px;
+      }
+
+      .tarjetas {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="dashboard">
+
+    <section class="encabezado">
+
+      <div class="logo-spotify">
+        <svg viewBox="0 0 100 100" aria-label="Logo de Spotify">
+          <circle cx="50" cy="50" r="48" fill="#1DB954"></circle>
+
+          <path 
+            d="M28 38 C43 31, 65 33, 78 42" 
+            fill="none" 
+            stroke="white" 
+            stroke-width="7" 
+            stroke-linecap="round">
+          </path>
+
+          <path 
+            d="M31 51 C45 46, 62 48, 73 55" 
+            fill="none" 
+            stroke="white" 
+            stroke-width="6" 
+            stroke-linecap="round">
+          </path>
+
+          <path 
+            d="M35 63 C47 59, 59 61, 67 66" 
+            fill="none" 
+            stroke="white" 
+            stroke-width="5" 
+            stroke-linecap="round">
+          </path>
+        </svg>
+      </div>
+
+      <h1>Conjunto de usuarios vs Dataset de Spotify</h1>
+      <p>Prototipo inicial del dashboard</p>
+
+    </section>
+
+    <section class="tarjetas">
+
+      <div class="tarjeta">
+        <div class="icono">♫</div>
+        <div>
+          <h3>Canciones</h3>
+          <p>Pendiente</p>
+        </div>
+      </div>
+
+      <div class="tarjeta">
+        <div class="icono">🏷</div>
+        <div>
+          <h3>Géneros</h3>
+          <p>Pendiente</p>
+        </div>
+      </div>
+
+      <div class="tarjeta">
+        <div class="icono">⚡</div>
+        <div>
+          <h3>Energy prom.</h3>
+          <p>Pendiente</p>
+        </div>
+      </div>
+
+      <div class="tarjeta">
+        <div class="icono">★</div>
+        <div>
+          <h3>Popularidad</h3>
+          <p>Pendiente</p>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="contenedor-paneles">
+
+      <div class="panel">
+        <h2>Perfil del grupo</h2>
+        <div class="placeholder">
+          Aquí se mostrará el resumen general del comportamiento musical del grupo.
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2>Comparación</h2>
+        <div class="placeholder">
+          Aquí se comparará el grupo frente al dataset global de Spotify.
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2>Canciones representativas</h2>
+        <div class="placeholder">
+          Aquí irá una tabla o listado breve con las canciones que mejor representan al grupo.
+        </div>
+      </div>
+
+    </section>
+
+    <section class="fila-inferior">
+
+      <div class="preguntas">
+        <h2>Preguntas a responder</h2>
+        <ul>
+          <li>¿Cómo es el comportamiento musical del grupo?</li>
+          <li>¿Qué características predominan en la música que escuchan?</li>
+          <li>¿Qué tan diverso es el grupo en términos musicales?</li>
+          <li>¿En qué se diferencia el grupo del dataset global?</li>
+          <li>¿El grupo escucha música más popular o más alternativa?</li>
+        </ul>
+      </div>
+
+      <div class="arquitectura">
+        <h2>Conexión con Arquitectura de Software</h2>
+
+        <div class="caja-arquitectura">
+
+          <div class="arquitectura-superior">
+
+            <div class="icono-arquitectura">⚙</div>
+
+            <div class="texto-arquitectura">
+              <h3>Proyecto integrado con Arquitectura de Software</h3>
+
+              <p>
+                Este dashboard hace parte de un proyecto trabajado en conjunto con la asignatura de
+                Arquitectura de Software, tomando como referencia la plataforma Spotify.
+              </p>
+            </div>
+
+          </div>
+
+          <div class="lista-arquitectura">
+
+            <div class="item-arquitectura">
+              <strong>Referencia:</strong>
+              Spotify utiliza microservicios, APIs y procesamiento de grandes volúmenes de datos para analizar el comportamiento de los usuarios.
+            </div>
+
+            <div class="item-arquitectura">
+              <strong>Aplicación en el proyecto:</strong>
+              se integran playlists del grupo y un dataset global de Spotify para realizar el análisis musical.
+            </div>
+
+            <div class="item-arquitectura">
+              <strong>Propósito:</strong>
+              transformar datos musicales en patrones, perfiles y conocimiento útil para responder las preguntas del dashboard.
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+
+    <footer class="pie">
+      <p>
+        <span>♪</span>
+        Este prototipo muestra solo la estructura inicial del dashboard. Created by: Estefany y Sahira
+      </p>
+    </footer>
+
+  </main>
+
+</body>
+</html>
