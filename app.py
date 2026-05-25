@@ -495,17 +495,18 @@ components.html(
         background: linear-gradient(135deg, #111827, #0b0f14);
         border: 1px solid rgba(29, 185, 84, 0.35);
         border-radius: 22px;
-        padding: 34px 28px;
+        padding: 36px 28px 42px 28px ;
         margin-bottom: 20px;
         box-shadow: 0 12px 28px rgba(0,0,0,0.28);
         text-align: center;
         font-family: Arial, Helvetica, sans-serif;
+        overflow: hidden;
     ">
 
         <div style="
             width: 82px;
             height: 82px;
-            margin: 0 auto 18px auto;
+            margin: 0 auto 20px auto;
             border-radius: 50%;
             background: #1DB954;
             display: flex;
@@ -541,11 +542,11 @@ components.html(
         </div>
 
         <div style="
-            font-size: 42px;
+            font-size: 40px;
             font-weight: 800;
             color: white;
-            margin-bottom: 10px;
-            line-height: 1.2;
+            margin-bottom: 16px;
+            line-height: 1.25;
         ">
             Conjunto de usuarios vs Dataset de Spotify
         </div>
@@ -553,15 +554,17 @@ components.html(
         <p style="
             color: #a5b4c3;
             font-size: 18px;
-            margin: 0;
-            line-height: 1.5;
+            margin: 0 auto;
+            line-height: 1.6;
+            max-width: 850px;
         ">
             Dashboard interactivo para analizar playlists del grupo y compararlas con un dataset global.
         </p>
 
     </div>
     """,
-    height=270
+    height=360,
+    scrolling=False
 )
 
 # =========================
