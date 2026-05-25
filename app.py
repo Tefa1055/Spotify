@@ -488,7 +488,8 @@ if busqueda.strip():
 # ENCABEZADO
 # =========================
 
-st.markdown("""
+st.markdown(
+    """
 <div class="bloque-titulo">
 
     <div class="logo-circulo">
@@ -528,7 +529,9 @@ st.markdown("""
     </p>
 
 </div>
-""", unsafe_allow_html=True)
+""", 
+    unsafe_allow_html=True
+)
 
 
 # =========================
