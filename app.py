@@ -488,18 +488,47 @@ if busqueda.strip():
 # ENCABEZADO
 # =========================
 
-st.markdown(
-    """
-    <div class="bloque-titulo">
-        <div class="logo-circulo">♫</div>
-        <div class="titulo-dashboard">Conjunto de usuarios vs Dataset de Spotify</div>
-        <p class="subtitulo-dashboard">
-            Dashboard interactivo para analizar playlists del grupo y compararlas con un dataset global.
-        </p>
+st.markdown("""
+<div class="bloque-titulo">
+
+    <div class="logo-circulo">
+        <svg width="56" height="56" viewBox="0 0 100 100">
+            <path 
+                d="M25 36 C42 29, 66 31, 80 41" 
+                fill="none" 
+                stroke="white" 
+                stroke-width="8" 
+                stroke-linecap="round">
+            </path>
+
+            <path 
+                d="M29 51 C45 46, 62 48, 74 56" 
+                fill="none" 
+                stroke="white" 
+                stroke-width="7" 
+                stroke-linecap="round">
+            </path>
+
+            <path 
+                d="M34 65 C47 61, 59 62, 68 68" 
+                fill="none" 
+                stroke="white" 
+                stroke-width="6" 
+                stroke-linecap="round">
+            </path>
+        </svg>
     </div>
-    """,
-    unsafe_allow_html=True
-)
+
+    <div class="titulo-dashboard">
+        Conjunto de usuarios vs Dataset de Spotify
+    </div>
+
+    <p class="subtitulo-dashboard">
+        Dashboard interactivo para analizar playlists del grupo y compararlas con un dataset global.
+    </p>
+
+</div>
+""", unsafe_allow_html=True)
 
 
 # =========================
