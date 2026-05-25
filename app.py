@@ -20,6 +20,7 @@ import numpy as np
 import pandas as pd
 import plotly.express as px
 import streamlit as st
+import streamlit.components.v1 as components
 
 
 # =========================
@@ -488,11 +489,30 @@ if busqueda.strip():
 # ENCABEZADO
 # =========================
 
-st.markdown(
+components.html(
     """
-    <div class="bloque-titulo">
-    
-        <div class="logo-circulo">
+    <div style="
+        background: linear-gradient(135deg, #111827, #0b0f14);
+        border: 1px solid rgba(29, 185, 84, 0.35);
+        border-radius: 22px;
+        padding: 34px 28px;
+        margin-bottom: 20px;
+        box-shadow: 0 12px 28px rgba(0,0,0,0.28);
+        text-align: center;
+        font-family: Arial, Helvetica, sans-serif;
+    ">
+
+        <div style="
+            width: 82px;
+            height: 82px;
+            margin: 0 auto 18px auto;
+            border-radius: 50%;
+            background: #1DB954;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 35px rgba(29,185,84,0.35);
+        ">
             <svg width="56" height="56" viewBox="0 0 100 100">
                 <path 
                     d="M25 36 C42 29, 66 31, 80 41" 
@@ -501,7 +521,7 @@ st.markdown(
                     stroke-width="8" 
                     stroke-linecap="round">
                 </path>
-    
+
                 <path 
                     d="M29 51 C45 46, 62 48, 74 56" 
                     fill="none" 
@@ -509,7 +529,7 @@ st.markdown(
                     stroke-width="7" 
                     stroke-linecap="round">
                 </path>
-    
+
                 <path 
                     d="M34 65 C47 61, 59 62, 68 68" 
                     fill="none" 
@@ -519,20 +539,30 @@ st.markdown(
                 </path>
             </svg>
         </div>
-    
-        <div class="titulo-dashboard">
+
+        <div style="
+            font-size: 42px;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 10px;
+            line-height: 1.2;
+        ">
             Conjunto de usuarios vs Dataset de Spotify
         </div>
-    
-        <p class="subtitulo-dashboard">
+
+        <p style="
+            color: #a5b4c3;
+            font-size: 18px;
+            margin: 0;
+            line-height: 1.5;
+        ">
             Dashboard interactivo para analizar playlists del grupo y compararlas con un dataset global.
         </p>
-    
-    </div>
-    """, 
-    unsafe_allow_html=True
-)
 
+    </div>
+    """,
+    height=270
+)
 
 # =========================
 # VALIDACIÓN DE FILTROS
