@@ -909,7 +909,7 @@ with tab_arquitectura:
 st.markdown(
     """
     <p class="nota">
-        Dashboard interactivo del proyecto de Ingeniería de Datos · Spotify · Render · Streamlit
+        Dashboard interactivo del proyecto de Ingeniería de Datos de Estefany Chaparro y Sahira Medina
     </p>
     """,
     unsafe_allow_html=True
